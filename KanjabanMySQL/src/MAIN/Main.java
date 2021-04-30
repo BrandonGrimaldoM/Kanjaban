@@ -5,6 +5,8 @@
  */
 package MAIN;
 
+import BD.Conection;
+
 /**
  *
  * @author GON
@@ -15,7 +17,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+       
        Login log = new Login();
        log.setVisible(true);
      

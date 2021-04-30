@@ -10,5 +10,11 @@ package BD;
  * @author GON
  */
 public class Data {
+    Conection mysqldata = new Conection();
+    ListProyect projects = new ListProyect();
+    
+    public void getProyect(){
+        
+    }
     
 }
