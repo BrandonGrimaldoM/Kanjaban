@@ -46,8 +46,13 @@ public class Conection {
         }
     }
     
-    public void insert(){
-        //stmt.executeUpdate();
+    public void insertTask(String name){
+        try {
+            stmt.executeUpdate("insert into task (name_task,description,priority,id_stage,id_project,create_date) "
+                             + "values (\"joda\",\"sfsf\",4,1,2,sysdate())");
+        } catch (SQLException ex) {
+            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     
@@ -98,7 +103,34 @@ public class Conection {
             data = stmt.executeQuery("SELECT * FROM project");
             data.next();
             
+           
             
+        } catch (SQLException ex) {
+            
+            
+        }
+    }
+    
+    public void getIdProyect(String id){
+        
+        try{
+            data = stmt.executeQuery("SELECT * FROM project where name_project="+'"'+id+'"');
+            data.next();
+            
+           
+            
+        } catch (SQLException ex) {
+            
+            
+        }
+    }
+    
+    public void getTask(String project){
+        try{
+            data = stmt.executeQuery("SELECT a.name_task,a.id_stage,b.name_project FROM task a join project b on (a.id_project = b.id_project) where name_project ="+'"'+project+'"');
+            data.next();
+            
+           
             
         } catch (SQLException ex) {
             

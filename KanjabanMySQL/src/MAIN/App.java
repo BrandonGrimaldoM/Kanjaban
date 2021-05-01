@@ -8,8 +8,11 @@ package MAIN;
 import BD.Conection;
 import BD.Data;
 import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,14 +24,51 @@ public class App extends javax.swing.JFrame {
      * Creates new form App
      */
     
-   
-    
+    public Conection mysqldata = new Conection();
+    DefaultListModel To = new DefaultListModel();
+    DefaultListModel Doing = new DefaultListModel();
+    DefaultListModel Done = new DefaultListModel();
+    String DefaultItem = "Select..........................";
     public App() {
         initComponents();
         this.setLocationRelativeTo(null);
-        cbxProject.addItem("Select...........");
-       
+        cbxProject.addItem(DefaultItem);
+        cbxProjectFull();
+        ListTo.setModel(To);
+        ListDoing.setModel(Doing);
+        ListDone.setModel(Done);
         
+    }
+    
+    public void cbxProjectFull(){
+        try{
+            mysqldata.getProyect();
+          do{
+                cbxProject.addItem(mysqldata.data.getString("name_project"));
+            }
+          while(mysqldata.data.next());
+        }catch(Exception e){}
+    }
+    
+    public void ListToDoingDone(){
+        To.removeAllElements();
+        Doing.removeAllElements();
+        Done.removeAllElements();
+        try{
+            mysqldata.getTask(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
+          do{
+              if(mysqldata.data.getInt("id_stage")== 1){
+                  To.addElement(mysqldata.data.getString("name_task"));
+              }else if (mysqldata.data.getInt("id_stage")== 2){
+                  Doing.addElement(mysqldata.data.getString("name_task"));
+              }else if(mysqldata.data.getInt("id_stage")== 3){
+                  Done.addElement(mysqldata.data.getString("name_task"));
+                  
+              }
+                
+            }
+          while(mysqldata.data.next());
+        }catch(Exception e){}
     }
 
     /**
@@ -88,10 +128,25 @@ public class App extends javax.swing.JFrame {
 
         jLabel5.setText("Done");
 
+        ListTo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListToMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(ListTo);
 
+        ListDoing.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListDoingMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(ListDoing);
 
+        ListDone.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ListDoneMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(ListDone);
 
         btnDetailsTo.setText("Details");
@@ -101,6 +156,11 @@ public class App extends javax.swing.JFrame {
         btnDetailsDone.setText("Details");
 
         btnNewTask.setText("New Task");
+        btnNewTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewTaskActionPerformed(evt);
+            }
+        });
 
         btnToDoing.setText(">");
 
@@ -186,10 +246,11 @@ public class App extends javax.swing.JFrame {
                     .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
@@ -213,8 +274,36 @@ public class App extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProjectActionPerformed
-         
+          ListToDoingDone();
     }//GEN-LAST:event_cbxProjectActionPerformed
+
+    private void ListToMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListToMouseClicked
+         
+         ListDoing.clearSelection();
+         ListDone.clearSelection();
+    }//GEN-LAST:event_ListToMouseClicked
+
+    private void ListDoingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListDoingMouseClicked
+         ListTo.clearSelection();
+         ListDone.clearSelection();
+    }//GEN-LAST:event_ListDoingMouseClicked
+
+    private void ListDoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListDoneMouseClicked
+         ListDoing.clearSelection();
+         ListTo.clearSelection();
+    }//GEN-LAST:event_ListDoneMouseClicked
+
+    private void btnNewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewTaskActionPerformed
+        if(cbxProject.getItemAt(cbxProject.getSelectedIndex())!=DefaultItem){
+            AddNewTask newTaskView = new AddNewTask(this,true);
+            newTaskView.selectProject = cbxProject.getItemAt(cbxProject.getSelectedIndex());
+            newTaskView.setVisible(true);
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Selecciona un proyecto para agregar tareas","¡Ups!",JOptionPane.WARNING_MESSAGE);
+        }
+        
+    }//GEN-LAST:event_btnNewTaskActionPerformed
 
     /**
      * @param args the command line arguments

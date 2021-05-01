@@ -17,7 +17,8 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    Conection mysqldata = new Conection();
+    
+    App app = new App();
     
     public Login() {
         initComponents();
@@ -89,19 +90,12 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingInActionPerformed
        
-       if(mysqldata.logUser(txtUser.getText(), txtPassword.getText())){
-           App app = new App();
+       if(app.mysqldata.logUser(txtUser.getText(), txtPassword.getText())){
+           
            
            app.setVisible(true);
            app.txtUserC.setText(txtUser.getText());
-           mysqldata.getProyect();
-           try{
-               do{app.cbxProject.addItem(mysqldata.data.getString("name_project"));}
-               while(mysqldata.data.next());
            
-           }catch(Exception e){
-           }
-           mysqldata.conClose();
            this.dispose();
        } 
        else{
