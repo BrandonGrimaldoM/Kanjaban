@@ -46,10 +46,10 @@ public class Conection {
         }
     }
     
-    public void insertTask(String name){
+    public void insertTask(String name,String desc,int priority,int stage,int project){
         try {
             stmt.executeUpdate("insert into task (name_task,description,priority,id_stage,id_project,create_date) "
-                             + "values (\"joda\",\"sfsf\",4,1,2,sysdate())");
+                             + "values ("+'"'+name+'"'+ ","+'"'+desc+'"'+","+ priority + ","+  stage+","+ project + ",sysdate())");
         } catch (SQLException ex) {
             Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -68,20 +68,7 @@ public class Conection {
         }
      }
     
-    public void select(){
-        try {
-            
-            
-            data = stmt.executeQuery("select * from profile");
-            data.next();
-            do{
-                System.out.print(data.getString("name"));
-            }while(data.next());
-        } catch (SQLException ex) {
-            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+ 
     public boolean logUser(String user,String password){
         
        

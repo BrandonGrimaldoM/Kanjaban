@@ -18,6 +18,7 @@ public class AddNewTask extends javax.swing.JDialog {
      */
     App on = new App();
     String selectProject;
+    int stageList;
     public AddNewTask(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -112,6 +113,18 @@ public class AddNewTask extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTaskActionPerformed
+        try{
+        on.mysqldata.getIdProyect(selectProject);
+        on.mysqldata.insertTask(
+        txtTask.getText(), 
+        txtDescription.getText(),
+        Integer.parseInt(cbxPriority.getItemAt(cbxPriority.getSelectedIndex())),
+        stageList,
+        on.mysqldata.data.getInt("id_project"));
+        }catch(Exception e){
+            
+        }
+        
         JOptionPane.showMessageDialog(null, "Agregaste una nueva tarea a "+selectProject,"",JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnAddTaskActionPerformed
 

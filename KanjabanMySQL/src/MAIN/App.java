@@ -295,8 +295,11 @@ public class App extends javax.swing.JFrame {
 
     private void btnNewTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewTaskActionPerformed
         if(cbxProject.getItemAt(cbxProject.getSelectedIndex())!=DefaultItem){
+            
             AddNewTask newTaskView = new AddNewTask(this,true);
             newTaskView.selectProject = cbxProject.getItemAt(cbxProject.getSelectedIndex());
+            newTaskView.stageList = 1;
+            cbxProject.setSelectedIndex(0);
             newTaskView.setVisible(true);
             
         }else{
