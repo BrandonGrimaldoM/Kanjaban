@@ -94,7 +94,7 @@ public class Login extends javax.swing.JFrame {
            
            
            app.setVisible(true);
-           app.txtUserC.setText(txtUser.getText());
+           
            
            this.dispose();
        } 

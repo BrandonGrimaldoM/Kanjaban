@@ -24,6 +24,7 @@ public class AddNewTask extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        
     }
 
     /**
@@ -43,8 +44,11 @@ public class AddNewTask extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         cbxPriority = new javax.swing.JComboBox<>();
         btnAddTask = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtProjectData = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Task:");
 
@@ -65,6 +69,10 @@ public class AddNewTask extends javax.swing.JDialog {
             }
         });
 
+        jLabel4.setText("Proyecto:");
+
+        txtProjectData.setText("Project");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,7 +84,10 @@ public class AddNewTask extends javax.swing.JDialog {
                         .addGap(221, 221, 221)
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(236, 236, 236)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtProjectData)
+                        .addGap(162, 162, 162)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(226, 226, 226)
@@ -93,7 +104,10 @@ public class AddNewTask extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4)
+                    .addComponent(txtProjectData))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTask, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11)
@@ -121,11 +135,15 @@ public class AddNewTask extends javax.swing.JDialog {
         Integer.parseInt(cbxPriority.getItemAt(cbxPriority.getSelectedIndex())),
         stageList,
         on.mysqldata.data.getInt("id_project"));
+        
+        txtTask.setText("");
+        txtDescription.setText("");
+        cbxPriority.setSelectedIndex(0);
         }catch(Exception e){
             
         }
         
-        JOptionPane.showMessageDialog(null, "Agregaste una nueva tarea a "+selectProject,"",JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_btnAddTaskActionPerformed
 
     /**
@@ -176,8 +194,10 @@ public class AddNewTask extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtDescription;
+    public javax.swing.JLabel txtProjectData;
     private javax.swing.JTextField txtTask;
     // End of variables declaration//GEN-END:variables
 }

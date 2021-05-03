@@ -8,6 +8,7 @@ package BD;
 
 
 import MAIN.App;
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,6 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,8 +52,9 @@ public class Conection {
         try {
             stmt.executeUpdate("insert into task (name_task,description,priority,id_stage,id_project,create_date) "
                              + "values ("+'"'+name+'"'+ ","+'"'+desc+'"'+","+ priority + ","+  stage+","+ project + ",sysdate())");
-        } catch (SQLException ex) {
-            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Agregaste una nueva tarea","",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Ya existe una tarea con este nombre");
         }
     }
     
@@ -68,7 +71,38 @@ public class Conection {
         }
      }
     
- 
+  public void UpdateTask(int num ,String name){
+      try{
+      stmt.executeUpdate("update task set id_stage =" + num + " where id_task > 0  and name_task =" +'"'+name+'"');
+      }catch(Exception e){
+          
+      }
+  }
+  
+  
+  public void UpdateAllProfile(String name,String pass){
+      try{
+      stmt.executeUpdate("update profile set name =" +'"'+name+'"'+ ",password =" +'"'+pass+'"'+" where id_user > 0  ");
+      }catch(Exception e){
+          
+      }
+  }
+  public void UpdateNameProfile(String name){
+      try{
+      stmt.executeUpdate("update profile set name =" +'"'+name+'"'+" where id_user > 0  ");
+      }catch(Exception e){
+          
+      }
+  }
+  
+  public void UpdatePassProfile(String pass){
+      try{
+      stmt.executeUpdate("update profile set password =" +'"'+pass+'"'+" where id_user > 0  ");
+      }catch(Exception e){
+          
+      }
+  }
+  
     public boolean logUser(String user,String password){
         
        
@@ -83,7 +117,17 @@ public class Conection {
         }
   
     }
-    
+    public void showUser(){
+         try{
+            data = stmt.executeQuery("select * from profile");
+            data.next();
+            
+            
+        } catch (SQLException ex) {
+            
+           
+        }
+    }
     public void getProyect(){
         
         try{
