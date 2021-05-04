@@ -5,6 +5,12 @@
  */
 package MAIN;
 
+import java.awt.JobAttributes;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author GON
@@ -14,10 +20,14 @@ public class Details extends javax.swing.JDialog {
     /**
      * Creates new form Details
      */
+    App detailsTask = new App();
+    public String taskname;
     public Details(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -46,6 +56,7 @@ public class Details extends javax.swing.JDialog {
         txtFDate = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtProject = new javax.swing.JLabel();
+        btnDefaul = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -61,8 +72,18 @@ public class Details extends javax.swing.JDialog {
         jLabel3.setText("Priority:");
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         cbxPriority.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
 
@@ -81,6 +102,14 @@ public class Details extends javax.swing.JDialog {
         jLabel7.setText("Project:");
 
         txtProject.setText("Project");
+
+        btnDefaul.setText("Restart");
+        btnDefaul.setToolTipText("");
+        btnDefaul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDefaulActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,7 +136,9 @@ public class Details extends javax.swing.JDialog {
                                 .addGap(28, 28, 28)
                                 .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnDelete))
+                                .addComponent(btnDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDefaul))
                             .addComponent(txtTask, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
@@ -146,7 +177,8 @@ public class Details extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(cbxPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEdit)
-                    .addComponent(btnDelete))
+                    .addComponent(btnDelete)
+                    .addComponent(btnDefaul))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -165,6 +197,43 @@ public class Details extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        try {
+            if(!txtTask.getText().equals(taskname) || !txtDescription.getText().equals(detailsTask.mysqldata.data.getString("description")) || !cbxPriority.getItemAt(cbxPriority.getSelectedIndex()).equals(detailsTask.mysqldata.data.getString("priority"))){
+                detailsTask.mysqldata.UpdateAllTask(txtTask.getText(), txtDescription.getText(), cbxPriority.getItemAt(cbxPriority.getSelectedIndex()),taskname);
+                taskname = txtTask.getText();
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Realiza cambios para editar","¡ups!",JOptionPane.WARNING_MESSAGE);
+        }
+        } catch (SQLException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDefaulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDefaulActionPerformed
+       load();
+    }//GEN-LAST:event_btnDefaulActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+       load();
+       detailsTask.mysqldata.DeleteTaskSelect(taskname);
+       this.dispose();
+    }//GEN-LAST:event_btnDeleteActionPerformed
+    public void load(){
+        detailsTask.mysqldata.showTask(taskname);
+        try {
+            txtTask.setText(taskname);
+            txtDescription.setText(detailsTask.mysqldata.data.getString("description"));
+            cbxPriority.setSelectedIndex(detailsTask.mysqldata.data.getInt("priority")-1);
+            txtCDate.setText(detailsTask.mysqldata.data.getString("create_date"));
+            txtSDate.setText(detailsTask.mysqldata.data.getString("start_date"));
+            txtFDate.setText(detailsTask.mysqldata.data.getString("end_date"));
+        } catch (SQLException ex) {
+            Logger.getLogger(Details.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -208,6 +277,7 @@ public class Details extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDefaul;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JComboBox<String> cbxPriority;
@@ -222,8 +292,8 @@ public class Details extends javax.swing.JDialog {
     private javax.swing.JLabel txtCDate;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JLabel txtFDate;
-    private javax.swing.JLabel txtProject;
+    public javax.swing.JLabel txtProject;
     private javax.swing.JLabel txtSDate;
-    private javax.swing.JTextField txtTask;
+    public javax.swing.JTextField txtTask;
     // End of variables declaration//GEN-END:variables
 }

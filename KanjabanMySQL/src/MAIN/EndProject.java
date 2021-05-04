@@ -14,6 +14,7 @@ public class EndProject extends javax.swing.JDialog {
     /**
      * Creates new form EndProject
      */
+    App off = new App();
     public EndProject(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -31,16 +32,21 @@ public class EndProject extends javax.swing.JDialog {
 
         btnFinish = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        txtendPro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         btnFinish.setText("Finish Proyect");
+        btnFinish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinishActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Project");
 
-        jLabel2.setText("Proyect");
+        txtendPro.setText("Proyect");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -52,7 +58,7 @@ public class EndProject extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
+                            .addComponent(txtendPro)
                             .addComponent(jLabel1)))
                     .addComponent(btnFinish))
                 .addContainerGap(49, Short.MAX_VALUE))
@@ -63,7 +69,7 @@ public class EndProject extends javax.swing.JDialog {
                 .addGap(21, 21, 21)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+                .addComponent(txtendPro)
                 .addGap(72, 72, 72)
                 .addComponent(btnFinish)
                 .addContainerGap(27, Short.MAX_VALUE))
@@ -71,6 +77,12 @@ public class EndProject extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFinishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishActionPerformed
+        off.mysqldata.DeleteTask(txtendPro.getText());
+        off.mysqldata.DeleteProject(txtendPro.getText());
+        this.dispose();
+    }//GEN-LAST:event_btnFinishActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,6 +129,6 @@ public class EndProject extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinish;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    public javax.swing.JLabel txtendPro;
     // End of variables declaration//GEN-END:variables
 }

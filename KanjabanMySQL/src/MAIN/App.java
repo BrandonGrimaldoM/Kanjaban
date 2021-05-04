@@ -101,6 +101,7 @@ public class App extends javax.swing.JFrame {
         btnDoingDone = new javax.swing.JButton();
         btnDoneDoing = new javax.swing.JButton();
         btnFinishTask = new javax.swing.JButton();
+        btnEditProject = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -112,7 +113,7 @@ public class App extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Proyectos");
+        jLabel2.setText("Proyects:");
 
         btnNew.setText("New");
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +122,15 @@ public class App extends javax.swing.JFrame {
             }
         });
 
+        cbxProject.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cbxProjectPopupMenuWillBecomeVisible(evt);
+            }
+        });
         cbxProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxProjectActionPerformed(evt);
@@ -217,60 +227,73 @@ public class App extends javax.swing.JFrame {
             }
         });
 
+        btnEditProject.setText("Edit");
+        btnEditProject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditProjectActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnProfile)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnDetailsTo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNewTask, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnToDoing, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(jLabel3)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addComponent(jLabel3))
-                            .addComponent(btnProfile)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(btnDetailsTo)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btnNewTask)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnToDoing, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnToTo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnDetailsDoing)
-                                        .addGap(38, 38, 38)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnDetailsDoing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(btnDoingDone))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(127, 127, 127)
+                                .addComponent(jLabel4)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnDoneDoing)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnDetailsDone)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnFinishTask))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(btnDoneDoing, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnDetailsDone, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(btnFinishTask, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addGap(232, 232, 232)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
-                                .addGap(106, 106, 106))))
+                                .addGap(114, 114, 114))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnNew)))
+                        .addComponent(btnNew)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEditProject)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -281,36 +304,42 @@ public class App extends javax.swing.JFrame {
                     .addComponent(btnProfile)
                     .addComponent(jLabel2)
                     .addComponent(btnNew)
-                    .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEditProject))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDetailsDoing)
-                    .addComponent(btnDetailsDone)
-                    .addComponent(btnDetailsTo)
-                    .addComponent(btnNewTask)
-                    .addComponent(btnToDoing)
-                    .addComponent(btnToTo)
-                    .addComponent(btnDoingDone)
-                    .addComponent(btnDoneDoing)
-                    .addComponent(btnFinishTask))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnDetailsTo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnDoingDone)
+                            .addComponent(btnDetailsDoing)
+                            .addComponent(btnToTo)
+                            .addComponent(btnToDoing)
+                            .addComponent(btnNewTask)
+                            .addComponent(btnDetailsDone)
+                            .addComponent(btnDoneDoing)
+                            .addComponent(btnFinishTask))))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbxProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxProjectActionPerformed
-          ListToDoingDone();
+        
+        ListToDoingDone();
     }//GEN-LAST:event_cbxProjectActionPerformed
 
     private void ListToMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ListToMouseClicked
@@ -348,6 +377,7 @@ public class App extends javax.swing.JFrame {
     private void btnToDoingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToDoingActionPerformed
         try{
         mysqldata.UpdateTask(2, (String) To.getElementAt(ListTo.getSelectedIndex()));
+        mysqldata.UpdateStartDate((String) To.getElementAt(ListTo.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Doing","¡Ups!",JOptionPane.WARNING_MESSAGE);
@@ -357,6 +387,7 @@ public class App extends javax.swing.JFrame {
     private void btnToToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnToToActionPerformed
        try{
         mysqldata.UpdateTask(1, (String) Doing.getElementAt(ListDoing.getSelectedIndex()));
+        mysqldata.UpdateStartDateNull((String) Doing.getElementAt(ListDoing.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a to","¡Ups!",JOptionPane.WARNING_MESSAGE);
@@ -366,6 +397,7 @@ public class App extends javax.swing.JFrame {
     private void btnDoingDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoingDoneActionPerformed
         try{
         mysqldata.UpdateTask(3, (String) Doing.getElementAt(ListDoing.getSelectedIndex()));
+        mysqldata.UpdateEndDate((String) Doing.getElementAt(ListDoing.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Done","¡Ups!",JOptionPane.WARNING_MESSAGE);
@@ -375,6 +407,7 @@ public class App extends javax.swing.JFrame {
     private void btnDoneDoingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneDoingActionPerformed
         try{
         mysqldata.UpdateTask(2, (String) Done.getElementAt(ListDone.getSelectedIndex()));
+        mysqldata.UpdateEndDateNull((String) Done.getElementAt(ListDone.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Doing","¡Ups!",JOptionPane.WARNING_MESSAGE);
@@ -393,23 +426,69 @@ public class App extends javax.swing.JFrame {
 
     private void btnFinishTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishTaskActionPerformed
        EndProject end = new EndProject(this,true);
+       end.txtendPro.setText(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
+       cbxProject.setSelectedIndex(0);
        end.setVisible(true);
     }//GEN-LAST:event_btnFinishTaskActionPerformed
 
     private void btnDetailsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsToActionPerformed
+       try{
        Details opendetailsTo = new Details(this,true);
+       opendetailsTo.txtProject.setText(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
+       opendetailsTo.taskname = (String) To.getElementAt(ListTo.getSelectedIndex());
+       opendetailsTo.load();
+       cbxProject.setSelectedIndex(0);
        opendetailsTo.setVisible(true);
+       }catch(Exception e){
+         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+       }
     }//GEN-LAST:event_btnDetailsToActionPerformed
 
     private void btnDetailsDoingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsDoingActionPerformed
+        try{
         Details opendetailsDoing = new Details(this,true);
+        opendetailsDoing.txtProject.setText(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
+        opendetailsDoing.taskname = (String) Doing.getElementAt(ListDoing.getSelectedIndex());
+        opendetailsDoing.load();
+        cbxProject.setSelectedIndex(0);
         opendetailsDoing.setVisible(true);
+        }catch(Exception e){
+         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+       }
     }//GEN-LAST:event_btnDetailsDoingActionPerformed
 
     private void btnDetailsDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsDoneActionPerformed
+        try{
         Details opendetailsDone = new Details(this,true);
+        opendetailsDone.txtProject.setText(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
+        opendetailsDone.taskname = (String) Done.getElementAt(ListDone.getSelectedIndex());
+        opendetailsDone.load();
+        cbxProject.setSelectedIndex(0);
         opendetailsDone.setVisible(true);
+        }catch(Exception e){
+         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+       }
     }//GEN-LAST:event_btnDetailsDoneActionPerformed
+
+    private void cbxProjectPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cbxProjectPopupMenuWillBecomeVisible
+        cbxProject.removeAllItems();
+        cbxProject.addItem(DefaultItem);
+        cbxProjectFull();
+        
+    }//GEN-LAST:event_cbxProjectPopupMenuWillBecomeVisible
+
+    private void btnEditProjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditProjectActionPerformed
+        if(!cbxProject.getItemAt(cbxProject.getSelectedIndex()).equals(DefaultItem)){
+        
+        EditProject editPro = new EditProject(this,true);
+        editPro.name = cbxProject.getItemAt(cbxProject.getSelectedIndex());
+        editPro.projectName();
+        cbxProject.setSelectedIndex(0);
+        editPro.setVisible(true);
+        }else{
+        JOptionPane.showMessageDialog(null, "Selecciona projecto para editar","¡Ups!",JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEditProjectActionPerformed
 
     /**
      * @param args the command line arguments
@@ -455,6 +534,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton btnDetailsTo;
     private javax.swing.JButton btnDoingDone;
     private javax.swing.JButton btnDoneDoing;
+    private javax.swing.JButton btnEditProject;
     private javax.swing.JButton btnFinishTask;
     private javax.swing.JButton btnNew;
     private javax.swing.JButton btnNewTask;
