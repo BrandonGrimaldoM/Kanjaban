@@ -6,7 +6,9 @@
 package MAIN;
 
 import BD.Conection;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -19,10 +21,11 @@ public class Login extends javax.swing.JFrame {
      */
     
     App app = new App();
-    
+    char[] logpass;
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/AppImages/icon.png")).getImage());
         
     }
 
@@ -35,51 +38,58 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
         btnSingIn = new javax.swing.JButton();
         txtPassword = new javax.swing.JPasswordField();
         txtUser = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setIconImages(null);
+        setMaximumSize(new java.awt.Dimension(344, 191));
+        setMinimumSize(new java.awt.Dimension(344, 191));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/KANJABAN.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 250, -1));
+
+        btnSingIn.setBackground(new java.awt.Color(0, 255, 0));
         btnSingIn.setText("Sing in");
+        btnSingIn.setBorderPainted(false);
         btnSingIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSingInActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSingIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 135, 123, -1));
 
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtPassword.setText("password");
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 104, 123, -1));
 
+        txtUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUser.setText("User");
+        txtUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUserMouseClicked(evt);
+            }
+        });
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
             }
         });
+        getContentPane().add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 78, 123, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtUser)
-                    .addComponent(txtPassword)
-                    .addComponent(btnSingIn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(121, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(74, Short.MAX_VALUE)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSingIn)
-                .addGap(37, 37, 37))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/3.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,7 +100,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnSingInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSingInActionPerformed
        
-       if(app.mysqldata.logUser(txtUser.getText(), txtPassword.getText())){
+       if(app.mysqldata.logUser(txtUser.getText(), String.valueOf(txtPassword.getPassword()))){
            
            
            app.setVisible(true);
@@ -99,11 +109,19 @@ public class Login extends javax.swing.JFrame {
            this.dispose();
        } 
        else{
-           JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrecto","error",JOptionPane.ERROR_MESSAGE);
+           JOptionPane.showMessageDialog(null, "User or password incorrect","error",JOptionPane.ERROR_MESSAGE);
            txtUser.setText("");
            txtPassword.setText("password");
        }
     }//GEN-LAST:event_btnSingInActionPerformed
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+       txtPassword.setText("");
+    }//GEN-LAST:event_txtPasswordMouseClicked
+
+    private void txtUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUserMouseClicked
+        txtUser.setText("");
+    }//GEN-LAST:event_txtUserMouseClicked
 
     /**
      * @param args the command line arguments
@@ -142,6 +160,8 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSingIn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

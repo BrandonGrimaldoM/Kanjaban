@@ -5,6 +5,8 @@
  */
 package MAIN;
 
+import java.awt.Color;
+
 /**
  *
  * @author GON
@@ -19,6 +21,7 @@ public class NewProject extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -39,7 +42,9 @@ public class NewProject extends javax.swing.JDialog {
 
         jLabel1.setText("Project:");
 
+        btnAdd.setBackground(new java.awt.Color(153, 255, 153));
         btnAdd.setText("Add");
+        btnAdd.setBorderPainted(false);
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -74,6 +79,7 @@ public class NewProject extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        
         insert.mysqldata.insertProyect(txtProject.getText());
         
     }//GEN-LAST:event_btnAddActionPerformed

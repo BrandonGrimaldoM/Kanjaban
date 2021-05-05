@@ -61,7 +61,9 @@ public class Profile extends javax.swing.JDialog {
 
         jLabel2.setText("Password:");
 
+        btnEdit.setBackground(new java.awt.Color(204, 255, 0));
         btnEdit.setText("Edit");
+        btnEdit.setBorderPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -111,20 +113,21 @@ public class Profile extends javax.swing.JDialog {
          
         try{
             String user = profileEdit.mysqldata.data.getString("name");
-        if((!user.equals(txtUserOn.getText())) && (!"".equals(txtPasswordOn.getText()))){
+        if((!user.equals(txtUserOn.getText())) && (!"".equals(String.valueOf(txtPasswordOn.getPassword())))){
             profileEdit.mysqldata.UpdateAllProfile(txtUserOn.getText(), txtPasswordOn.getText());
-            JOptionPane.showMessageDialog(null, "Se cambio el usuario y la contraseña","",JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showMessageDialog(null, "User name and password changed","",JOptionPane.DEFAULT_OPTION);
             this.dispose();
         }else if( !user.equals(txtUserOn.getText())){
             profileEdit.mysqldata.UpdateNameProfile(txtUserOn.getText());
-            JOptionPane.showMessageDialog(null, "Se cambio el Usuario","",JOptionPane.DEFAULT_OPTION);
+            JOptionPane.showMessageDialog(null, "User name changed","",JOptionPane.DEFAULT_OPTION);
             this.dispose();
-        } else if( !"".equals(txtPasswordOn.getText())){
-            profileEdit.mysqldata.UpdatePassProfile(txtPasswordOn.getText());
-            JOptionPane.showMessageDialog(null, "Se cambio la contraseña","",JOptionPane.DEFAULT_OPTION);
+        } else if( !"".equals(String.valueOf(txtPasswordOn.getPassword()))){
+            
+            profileEdit.mysqldata.UpdatePassProfile(String.valueOf(txtPasswordOn.getPassword()));
+            JOptionPane.showMessageDialog(null, "Password changed","",JOptionPane.DEFAULT_OPTION);
             this.dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Para editar debes modificar los datos","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "edit the fields","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
         
         }catch (Exception e){

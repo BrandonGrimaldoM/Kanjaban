@@ -33,47 +33,35 @@ public class EndProject extends javax.swing.JDialog {
         btnFinish = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtendPro = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnFinish.setText("Finish Proyect");
+        btnFinish.setBackground(new java.awt.Color(255, 102, 51));
+        btnFinish.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnFinish.setText("Finish Project");
+        btnFinish.setBorderPainted(false);
+        btnFinish.setFocusPainted(false);
         btnFinish.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinishActionPerformed(evt);
             }
         });
+        getContentPane().add(btnFinish, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 150, 50));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("Project");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, 30));
 
+        txtendPro.setFont(new java.awt.Font("Tahoma", 1, 70)); // NOI18N
+        txtendPro.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         txtendPro.setText("Proyect");
+        getContentPane().add(txtendPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 460, 180));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtendPro)
-                            .addComponent(jLabel1)))
-                    .addComponent(btnFinish))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(txtendPro)
-                .addGap(72, 72, 72)
-                .addComponent(btnFinish)
-                .addContainerGap(27, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/2.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -129,6 +117,7 @@ public class EndProject extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnFinish;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     public javax.swing.JLabel txtendPro;
     // End of variables declaration//GEN-END:variables
 }

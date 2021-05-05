@@ -54,7 +54,7 @@ public class Conection {
                              + "values ("+'"'+name+'"'+ ","+'"'+desc+'"'+","+ priority + ","+  stage+","+ project + ",sysdate())");
             JOptionPane.showMessageDialog(null, "Agregaste una nueva tarea","",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Ya existe una tarea con este nombre");
+            JOptionPane.showMessageDialog(null,"A task with this name already exists");
         }
     }
     
@@ -65,7 +65,7 @@ public class Conection {
                              + "values ("+'"'+project+'"'+",1)");
             JOptionPane.showMessageDialog(null, "Agregaste un nuevo proyecto","",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null,"Ya existe un proyecto con este nombre");
+            JOptionPane.showMessageDialog(null,"A project with this name already exists");
         }
     }
     
@@ -144,7 +144,7 @@ public class Conection {
       stmt.executeUpdate("update task set name_task =" +'"'+name+'"'+ ",description =" +'"'+desc+'"'+",priority ="+prio +" where id_task > 0 and name_task ="+'"'+nametask+'"');
       JOptionPane.showMessageDialog(null, "Cambios realizados","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "ya existe una tarea con ese nombre","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "A task with this name already exists","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
   }
     
@@ -153,7 +153,7 @@ public class Conection {
       stmt.executeUpdate("update project set name_project =" +'"'+newname+'"'+" where id_project > 0 and name_project ="+'"'+name+'"');
       JOptionPane.showMessageDialog(null, "Cambios realizados","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "ya existe un projecto con ese nombre","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "A project with this name already exists","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
   }
     
@@ -217,9 +217,9 @@ public class Conection {
           getIdProyect(proyect);
           stmt.executeUpdate("delete from task"+" where id_task > 0 and id_project ="+data.getInt("id_project"));
           
-          JOptionPane.showMessageDialog(null, "Tareas eliminadas","",JOptionPane.DEFAULT_OPTION);
+          JOptionPane.showMessageDialog(null, "Task deleted","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "No se pudo eliminar","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "can't deleted","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
   }
     
@@ -228,9 +228,9 @@ public class Conection {
           getIdProyect(proyect);
           
           stmt.executeUpdate("delete from project"+" where id_project ="+data.getInt("id_project"));
-          JOptionPane.showMessageDialog(null, "Proyecto Eliminado","",JOptionPane.DEFAULT_OPTION);
+          JOptionPane.showMessageDialog(null, "Project deleted","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "No se pudo eliminar","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "can't delete","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
   }
     
@@ -239,44 +239,44 @@ public class Conection {
           
           stmt.executeUpdate("delete from task"+" where id_task > 0 and name_task ="+'"'+proyect+'"');
           
-          JOptionPane.showMessageDialog(null, "Tareas eliminadas","",JOptionPane.DEFAULT_OPTION);
+          JOptionPane.showMessageDialog(null, "Task deleted","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "No se pudo eliminar","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "can't delete","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
   }
     
     public void UpdateStartDate(String name){
         try{
       stmt.executeUpdate("update task set start_date = sysdate() where id_task > 0 and name_task ="+'"'+name+'"');
-      JOptionPane.showMessageDialog(null, "Tarea Iniciada","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "Doing Task","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "tarea no iniciada","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "ups","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
     }
     
     public void UpdateEndDate(String name){
          try{
       stmt.executeUpdate("update task set end_date = sysdate() where id_task > 0 and name_task ="+'"'+name+'"');
-      JOptionPane.showMessageDialog(null, "Tarea Finalizada","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "Done task","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "tarea no iniciada","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "ups","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
     }
     public void UpdateStartDateNull(String name){
         try{
       stmt.executeUpdate("update task set start_date = null where id_task > 0 and name_task ="+'"'+name+'"');
-      JOptionPane.showMessageDialog(null, "Tarea cancelada","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "Task stopped","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "tarea no iniciada","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "ups","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
     }
     
     public void UpdateEndDateNull(String name){
          try{
       stmt.executeUpdate("update task set end_date = null where id_task > 0 and name_task ="+'"'+name+'"');
-      JOptionPane.showMessageDialog(null, "Tarea Reanudada","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "Resuming","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
-          JOptionPane.showMessageDialog(null, "tarea no iniciada","¡Ups!",JOptionPane.WARNING_MESSAGE);
+          JOptionPane.showMessageDialog(null, "ups","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
     }
     

@@ -43,7 +43,9 @@ public class EditProject extends javax.swing.JDialog {
 
         jLabel1.setText("Project:");
 
+        btnEdit.setBackground(new java.awt.Color(153, 255, 153));
         btnEdit.setText("Edit");
+        btnEdit.setBorderPainted(false);
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditActionPerformed(evt);
@@ -82,7 +84,7 @@ public class EditProject extends javax.swing.JDialog {
         editP.mysqldata.UpdateProject(txtName.getText(), name);
         this.dispose();
         }else{
-            JOptionPane.showMessageDialog(null, "Realiza cambios para editar el nombre del proyecto","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "edit the field","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEditActionPerformed
 

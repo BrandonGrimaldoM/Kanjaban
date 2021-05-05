@@ -102,26 +102,38 @@ public class App extends javax.swing.JFrame {
         btnDoneDoing = new javax.swing.JButton();
         btnFinishTask = new javax.swing.JButton();
         btnEditProject = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnProfile.setBackground(new java.awt.Color(0, 255, 0));
         btnProfile.setText("Profile");
+        btnProfile.setBorderPainted(false);
         btnProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProfileActionPerformed(evt);
             }
         });
+        getContentPane().add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jLabel2.setText("Proyects:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, 50));
 
+        btnNew.setBackground(new java.awt.Color(0, 255, 0));
         btnNew.setText("New");
+        btnNew.setBorderPainted(false);
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 11, -1, -1));
 
+        cbxProject.setBackground(new java.awt.Color(0, 255, 0));
         cbxProject.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -136,13 +148,23 @@ public class App extends javax.swing.JFrame {
                 cbxProjectActionPerformed(evt);
             }
         });
+        getContentPane().add(cbxProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 12, 229, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("To");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 47, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setText("Doing");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 47, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Done");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 47, -1, -1));
 
+        ListTo.setBackground(new java.awt.Color(255, 255, 102));
+        ListTo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ListTo.setSelectionBackground(new java.awt.Color(255, 255, 255));
         ListTo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListToMouseClicked(evt);
@@ -150,6 +172,11 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(ListTo);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 102, 247, 236));
+
+        ListDoing.setBackground(new java.awt.Color(102, 255, 204));
+        ListDoing.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ListDoing.setSelectionBackground(new java.awt.Color(255, 255, 255));
         ListDoing.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListDoingMouseClicked(evt);
@@ -157,6 +184,11 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(ListDoing);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 102, 247, 236));
+
+        ListDone.setBackground(new java.awt.Color(153, 255, 153));
+        ListDone.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ListDone.setSelectionBackground(new java.awt.Color(255, 255, 255));
         ListDone.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ListDoneMouseClicked(evt);
@@ -164,175 +196,114 @@ public class App extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(ListDone);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 102, 247, 236));
+
+        btnDetailsTo.setBackground(new java.awt.Color(0, 255, 0));
         btnDetailsTo.setText("Details");
+        btnDetailsTo.setBorderPainted(false);
         btnDetailsTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetailsToActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDetailsTo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 344, -1, -1));
 
+        btnDetailsDoing.setBackground(new java.awt.Color(0, 255, 0));
         btnDetailsDoing.setText("Details");
+        btnDetailsDoing.setBorderPainted(false);
         btnDetailsDoing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetailsDoingActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDetailsDoing, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 344, 153, -1));
 
+        btnDetailsDone.setBackground(new java.awt.Color(0, 255, 0));
         btnDetailsDone.setText("Details");
+        btnDetailsDone.setBorderPainted(false);
         btnDetailsDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDetailsDoneActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDetailsDone, new org.netbeans.lib.awtextra.AbsoluteConstraints(587, 344, 73, -1));
 
+        btnNewTask.setBackground(new java.awt.Color(0, 255, 0));
         btnNewTask.setText("New Task");
+        btnNewTask.setBorderPainted(false);
         btnNewTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewTaskActionPerformed(evt);
             }
         });
+        getContentPane().add(btnNewTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 344, 120, -1));
 
+        btnToDoing.setBackground(new java.awt.Color(0, 255, 0));
         btnToDoing.setText(">");
+        btnToDoing.setBorderPainted(false);
         btnToDoing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnToDoingActionPerformed(evt);
             }
         });
+        getContentPane().add(btnToDoing, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 344, -1, -1));
 
+        btnToTo.setBackground(new java.awt.Color(0, 255, 0));
         btnToTo.setText("<");
+        btnToTo.setBorderPainted(false);
         btnToTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnToToActionPerformed(evt);
             }
         });
+        getContentPane().add(btnToTo, new org.netbeans.lib.awtextra.AbsoluteConstraints(275, 344, -1, -1));
 
+        btnDoingDone.setBackground(new java.awt.Color(0, 255, 0));
         btnDoingDone.setText(">");
+        btnDoingDone.setBorderPainted(false);
         btnDoingDone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoingDoneActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDoingDone, new org.netbeans.lib.awtextra.AbsoluteConstraints(481, 344, -1, -1));
 
+        btnDoneDoing.setBackground(new java.awt.Color(0, 255, 0));
         btnDoneDoing.setText("<");
+        btnDoneDoing.setBorderPainted(false);
         btnDoneDoing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDoneDoingActionPerformed(evt);
             }
         });
+        getContentPane().add(btnDoneDoing, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 344, -1, -1));
 
+        btnFinishTask.setBackground(new java.awt.Color(0, 255, 0));
         btnFinishTask.setText("Finish Proyect");
+        btnFinishTask.setBorderPainted(false);
         btnFinishTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinishTaskActionPerformed(evt);
             }
         });
+        getContentPane().add(btnFinishTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 344, 121, -1));
 
+        btnEditProject.setBackground(new java.awt.Color(0, 255, 0));
         btnEditProject.setText("Edit");
+        btnEditProject.setBorderPainted(false);
         btnEditProject.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditProjectActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEditProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(736, 11, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnProfile)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDetailsTo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNewTask, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnToDoing, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(jLabel3)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnToTo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDetailsDoing, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDoingDone))
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(127, 127, 127)
-                                .addComponent(jLabel4)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnDoneDoing, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnDetailsDone, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnFinishTask, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addGap(114, 114, 114))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnNew)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnEditProject)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnProfile)
-                    .addComponent(jLabel2)
-                    .addComponent(btnNew)
-                    .addComponent(cbxProject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEditProject))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDetailsTo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane3)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnDoingDone)
-                            .addComponent(btnDetailsDoing)
-                            .addComponent(btnToTo)
-                            .addComponent(btnToDoing)
-                            .addComponent(btnNewTask)
-                            .addComponent(btnDetailsDone)
-                            .addComponent(btnDoneDoing)
-                            .addComponent(btnFinishTask))))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/3.jpg"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 380));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/3.jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 410, 380));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -369,7 +340,7 @@ public class App extends javax.swing.JFrame {
             newTaskView.setVisible(true);
             
         }else{
-            JOptionPane.showMessageDialog(null, "Selecciona un proyecto para agregar tareas","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select proyect","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_btnNewTaskActionPerformed
@@ -380,7 +351,7 @@ public class App extends javax.swing.JFrame {
         mysqldata.UpdateStartDate((String) To.getElementAt(ListTo.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Doing","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select task","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnToDoingActionPerformed
 
@@ -390,7 +361,7 @@ public class App extends javax.swing.JFrame {
         mysqldata.UpdateStartDateNull((String) Doing.getElementAt(ListDoing.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a to","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select task","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnToToActionPerformed
 
@@ -400,7 +371,7 @@ public class App extends javax.swing.JFrame {
         mysqldata.UpdateEndDate((String) Doing.getElementAt(ListDoing.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Done","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select task","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDoingDoneActionPerformed
 
@@ -410,7 +381,7 @@ public class App extends javax.swing.JFrame {
         mysqldata.UpdateEndDateNull((String) Done.getElementAt(ListDone.getSelectedIndex()));
          ListToDoingDone();
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Selecciona una Tarea para agregar a Doing","¡Ups!",JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Select task","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDoneDoingActionPerformed
 
@@ -425,10 +396,14 @@ public class App extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnFinishTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinishTaskActionPerformed
+       if(cbxProject.getSelectedIndex()!=0){
        EndProject end = new EndProject(this,true);
        end.txtendPro.setText(cbxProject.getItemAt(cbxProject.getSelectedIndex()));
        cbxProject.setSelectedIndex(0);
        end.setVisible(true);
+       }else{
+           JOptionPane.showMessageDialog(null, "Select project");
+       }
     }//GEN-LAST:event_btnFinishTaskActionPerformed
 
     private void btnDetailsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetailsToActionPerformed
@@ -440,7 +415,7 @@ public class App extends javax.swing.JFrame {
        cbxProject.setSelectedIndex(0);
        opendetailsTo.setVisible(true);
        }catch(Exception e){
-         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+         JOptionPane.showMessageDialog(null, "Select task","¡ups!",JOptionPane.WARNING_MESSAGE);
        }
     }//GEN-LAST:event_btnDetailsToActionPerformed
 
@@ -453,7 +428,7 @@ public class App extends javax.swing.JFrame {
         cbxProject.setSelectedIndex(0);
         opendetailsDoing.setVisible(true);
         }catch(Exception e){
-         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+         JOptionPane.showMessageDialog(null, "Select task","¡ups!",JOptionPane.WARNING_MESSAGE);
        }
     }//GEN-LAST:event_btnDetailsDoingActionPerformed
 
@@ -466,7 +441,7 @@ public class App extends javax.swing.JFrame {
         cbxProject.setSelectedIndex(0);
         opendetailsDone.setVisible(true);
         }catch(Exception e){
-         JOptionPane.showMessageDialog(null, "Selecciona una tarea","¡ups!",JOptionPane.WARNING_MESSAGE);
+         JOptionPane.showMessageDialog(null, "Select task","¡ups!",JOptionPane.WARNING_MESSAGE);
        }
     }//GEN-LAST:event_btnDetailsDoneActionPerformed
 
@@ -486,7 +461,7 @@ public class App extends javax.swing.JFrame {
         cbxProject.setSelectedIndex(0);
         editPro.setVisible(true);
         }else{
-        JOptionPane.showMessageDialog(null, "Selecciona projecto para editar","¡Ups!",JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Select project","¡Ups!",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEditProjectActionPerformed
 
@@ -542,10 +517,12 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JButton btnToDoing;
     private javax.swing.JButton btnToTo;
     public javax.swing.JComboBox<String> cbxProject;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
