@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
  * @author GON
  */
 public class Conection {
-    String user = "root";
+    String user = "James";
     String password="clave";
     String url = "jdbc:mysql://localhost:3306/kanjaban";
     Connection con;
@@ -52,7 +52,7 @@ public class Conection {
         try {
             stmt.executeUpdate("insert into task (name_task,description,priority,id_stage,id_project,create_date) "
                              + "values ("+'"'+name+'"'+ ","+'"'+desc+'"'+","+ priority + ","+  stage+","+ project + ",sysdate())");
-            JOptionPane.showMessageDialog(null, "Agregaste una nueva tarea","",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Added task","",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"A task with this name already exists");
         }
@@ -63,7 +63,7 @@ public class Conection {
         try {
             stmt.executeUpdate("insert into project (name_project,id_user) "
                              + "values ("+'"'+project+'"'+",1)");
-            JOptionPane.showMessageDialog(null, "Agregaste un nuevo proyecto","",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Added project","",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"A project with this name already exists");
         }
@@ -142,7 +142,7 @@ public class Conection {
     public void UpdateAllTask(String name,String desc,String prio,String nametask){
       try{
       stmt.executeUpdate("update task set name_task =" +'"'+name+'"'+ ",description =" +'"'+desc+'"'+",priority ="+prio +" where id_task > 0 and name_task ="+'"'+nametask+'"');
-      JOptionPane.showMessageDialog(null, "Cambios realizados","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "edited","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
           JOptionPane.showMessageDialog(null, "A task with this name already exists","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
@@ -151,7 +151,7 @@ public class Conection {
     public void UpdateProject(String newname,String name){
       try{
       stmt.executeUpdate("update project set name_project =" +'"'+newname+'"'+" where id_project > 0 and name_project ="+'"'+name+'"');
-      JOptionPane.showMessageDialog(null, "Cambios realizados","",JOptionPane.DEFAULT_OPTION);
+      JOptionPane.showMessageDialog(null, "edited","",JOptionPane.DEFAULT_OPTION);
       }catch(Exception e){
           JOptionPane.showMessageDialog(null, "A project with this name already exists","¡Ups!",JOptionPane.WARNING_MESSAGE);
       }
@@ -200,7 +200,7 @@ public class Conection {
     
     public void getTask(String project){
         try{
-            data = stmt.executeQuery("SELECT a.name_task,a.id_stage,b.name_project FROM task a join project b on (a.id_project = b.id_project) where name_project ="+'"'+project+'"');
+            data = stmt.executeQuery("SELECT a.name_task,a.id_stage,a.priority,b.name_project FROM task a join project b on (a.id_project = b.id_project) where name_project ="+'"'+project+'"'+"order by a.priority desc");
             data.next();
             
            

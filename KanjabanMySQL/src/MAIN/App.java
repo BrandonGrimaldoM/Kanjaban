@@ -11,6 +11,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -31,6 +32,7 @@ public class App extends javax.swing.JFrame {
     public App() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(getClass().getResource("/AppImages/icon.png")).getImage());
         cbxProject.addItem(DefaultItem);
         cbxProjectFull();
         ListTo.setModel(To);
@@ -83,6 +85,7 @@ public class App extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnNew = new javax.swing.JButton();
         cbxProject = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -118,10 +121,10 @@ public class App extends javax.swing.JFrame {
                 btnProfileActionPerformed(evt);
             }
         });
-        getContentPane().add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        getContentPane().add(btnProfile, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jLabel2.setText("Proyects:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 0, -1, 50));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 60, 40));
 
         btnNew.setBackground(new java.awt.Color(0, 255, 0));
         btnNew.setText("New");
@@ -131,7 +134,7 @@ public class App extends javax.swing.JFrame {
                 btnNewActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(673, 11, -1, -1));
+        getContentPane().add(btnNew, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 30, -1, -1));
 
         cbxProject.setBackground(new java.awt.Color(0, 255, 0));
         cbxProject.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
@@ -148,19 +151,22 @@ public class App extends javax.swing.JFrame {
                 cbxProjectActionPerformed(evt);
             }
         });
-        getContentPane().add(cbxProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(426, 12, 229, -1));
+        getContentPane().add(cbxProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 229, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/KANJABAN.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 240, 70));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("To");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 47, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setText("Doing");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 47, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setText("Done");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 47, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 60, -1, -1));
 
         ListTo.setBackground(new java.awt.Color(255, 255, 102));
         ListTo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -296,7 +302,7 @@ public class App extends javax.swing.JFrame {
                 btnEditProjectActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEditProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(736, 11, -1, -1));
+        getContentPane().add(btnEditProject, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 30, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/AppImages/3.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 380));
@@ -523,6 +529,7 @@ public class App extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
