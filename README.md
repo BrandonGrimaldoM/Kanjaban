@@ -2,7 +2,11 @@
 
 Kanjaba es una aplicación hecha en java usando NetBeans para organizar proyectos personales basado en la metodología kanban enfocado en un solo usuario.
 
-Para probar la aplicación sin problemas en su pc , siga las siguientes indicaciones.
+Para probar la aplicación sin problemas en su pc, siga las siguientes indicaciones.
+
+# Elementos necesarios
+
+![](https://github.com/BrandonGrimaldoM/Kanjaban/blob/master/KanjabanMySQL/build/classes/AppImages/KANJABAN.png)
 
 - 1)instale MySql y MysqlWorkbench.
 - 2)instale la base de datos usando el archivo .sql en la carpeta BDKanjaban.
